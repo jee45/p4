@@ -307,6 +307,12 @@ def submitNewPost():
     db.session.add(newPost)
     db.session.commit()
 
+    #count pictures in database
+
+    count = models.Post.query.filter_by(photo!=None).count()
+
+    flask.flash("pic count ",count)
+
     flask.flash('new post submitted!')
     print(flask.request)
 
@@ -322,10 +328,7 @@ def photo(post_id):
     if flask.g.user is None:
         flask.abort(403)
 
-
     post = models.Post.query.get_or_404(post_id)
-
-    flask.flash('size of file is: ', len(post.photo))
 
     # OK, send the data
     return (post.photo, post.photo_type)
