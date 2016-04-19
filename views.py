@@ -269,16 +269,12 @@ def submitNewPost():
     # request.files has uploaded files
     file = flask.request.files['image']
 
+
     # check that we think the file is an image file
     if not file.mimetype.startswith('image/'):
         # oops
         # in a good app, you provide a useful error message...
         flask.abort(400)
-
-
-
-
-
 
 
 
@@ -291,6 +287,8 @@ def submitNewPost():
     newPost = models.Post(entry, creator, date)
 
     newPost.photo_type = file.mimetype
+
+    flask.flash(newPost.photo_type)
 
     # get the photo content. we read it into a 'BytesIO'
     photo_data = io.BytesIO()
