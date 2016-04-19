@@ -1,0 +1,116 @@
+{% extends "base.html" %}
+{% block content %}
+    {% if  session.auth_user %}
+
+        <a class="pure-button" href="/logout"> logout</a>
+        logged in as {{ user.username }}
+
+        <div class="light">
+            <h3>profile info</h3> <a class="pure-button" href="/editMyProfile">editProfile</a>
+            <br>
+            name: {{ user.username }}
+            <br>
+            location: {{ user.location }}
+            <br>
+            bio: {{ user.bio }}
+            <br>
+
+
+        </div>
+
+
+
+
+
+
+        <div class ="light">
+            <h3 class="mid">make a new post  </h3>
+            <div class="mid">
+                <form action="/submitNewPost" method="post" enctype=multipart/form-data class="out pure-form newPost">
+                    <label for="entry" >post entry
+                    <textarea  id="entry" name="entry" rows="3" cols="50"> </textarea>
+                        </label>
+                    <br>
+                     <label for="url" >
+                        url
+                         <input id="url" type="text" name="url">
+                     </label>
+                    <br>
+                    <label for="file" >
+                         upload a file
+                        <input type=file name="image" id="image" accept="image/*">
+                    </label>
+
+                    <input type="submit" class="pure-button newPost">
+                </form>
+
+
+
+            </div>
+
+        </div>
+
+    {% endif %}
+
+    <div class="light">
+        find Other Users:
+        <a class="pure-button" href="/findOtherUsers"> find some </a>
+    </div>
+
+    {% if session.auth_user %}
+        <div class="light">display posts from users i follow
+    {% else %}
+        <div class="light">display newest posts from all users
+    {%  endif%}
+
+     {% if posts %}
+
+            {% for post in posts %}
+
+                <div class="mid entry">
+                    <a class="pure-button" href="/otherUser/{{ post.creator.id }}">{{ post.creator.username }}</a>
+                    {% if post.url %}
+                        link: <a class="pure-button url" href="{{ post.url }}">{{ post.url }}</a><br>
+                    {% endif %}
+
+                    {{ post.post_text }}
+                    <div class="mid entryhead ">  {{ loop.index }} .            . {{ post.date }}</div>
+
+                </div>
+
+            {% endfor %}
+     {% endif %}
+    </div>
+    {% if  session.auth_user %}
+        <div class="light">
+            display my posts
+            {% if user.posts %}
+                {% for post in user.posts %}
+                    <div class="mid entry">
+
+                        {% if post.url %}
+                            link:
+                            <a class="pure-button url" href="{{ post.url }}"> {{ post.url }}</a>
+                        {% endif %}
+
+
+                        {% if  post.photo %}
+                            <a href="/viewPhoto/{{ post.id }}"><img class="photo" src="{{ url_for('photo', post_id=post.id) }}"></a>
+                        {% endif %}
+
+
+                        <div>
+                            {{ loop.index }} .            .  {{ post.post_text }}
+                        </div>
+
+
+                    </div>
+                {% endfor %}
+            {% endif %}
+        </div>
+
+    {% endif %}
+
+     <script src="{{ url_for('static', filename='handlePosts.js') }}"></script>
+
+{% endblock %}

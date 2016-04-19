@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Twitter clone</h1>
+    <div class="mid">
+    Login
+    <form name="login" action="/login" method="POST" class="mid pure-form">
+        <fieldset>
+            Username:
+            <br>
+            <input type="text" name="username" placeholder="Username">
+            <br>
+
+            Password:
+            <br>
+            <input type="password" name="password" placeholder="Password">
+            <br>
+            <button value="button1" class=" button-xsmall pure-button pure-button-primary">Log in</button>
+
+        </fieldset>
+    </form>
+
+
+
+
+    Register as New User
+    <form name="createNewUser" action="/createNewUser" method="POST" class="mid pure-form">
+        <fieldset>
+            Username:
+            <br>
+            <input type="text" name="username" placeholder="Username">
+            <br>
+            Password:
+            <br>
+            <input type="password" name="password" placeholder="Password">
+            <br>
+
+            Confirm Password:
+            <br>
+            <input type = "password" name = "confirm" placeholder="Confirm Password">
+            <br>
+
+            <button value="button1" class=" button-xsmall pure-button pure-button-primary">Register</button>
+
+        </fieldset>
+    </form>
+    </div>
+
+
+{% endblock %}

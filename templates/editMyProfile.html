@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% block content %}
+
+    <div>
+        <a class="pure-button" href="/logout"> logout</a>
+        <a class="pure-button" href="/home">home</a>
+    </div>
+    <div class="light">
+        this is where you can edit your profile:
+    </div>
+
+    <div class="light left">
+
+        <form name="profileInfo" action="/submitProfileEdits" method="POST" class="mid pure-form pure-form-aligned">
+            <fieldset>
+
+                <br>
+                <div class="alreadyThere">{{ user.location }}</div>
+                 <label for="location" >
+                     location:
+                    <input type="text" name="location">
+                 </label>
+
+
+
+                <br>
+                <div class="alreadyThere">{{ user.bio }}</div>
+                <label for="bio">
+                    bio:
+
+                    <textarea name="bio" rows="3" cols="50"></textarea>
+                </label>
+                <br>
+                <div class="alreadyThere">{{ user.grav_hash }}</div>
+                <label for="avatarurl" >
+                     gravatar email: <img class="avatar recipient" src="https://www.gravatar.com/avatar/{{ user.grav_hash }}">
+                    <input type="text" name="gravataremail">
+
+                 </label>
+
+                <button value="button1" class=" button-xsmall pure-button pure-button-primary">submit changes</button>
+
+            </fieldset>
+        </form>
+
+
+    </div>
+
+
+{% endblock %}

@@ -1,0 +1,96 @@
+{% extends "base.html" %}
+{% block content %}
+     {% if  session.auth_user %}
+
+        <script type="text/javascript"  src="/static/followButton.js"></script>
+        <a class="pure-button" href="/logout"> logout</a>
+        <a class="pure-button" href="/home">home</a>
+    {% endif %}
+
+    <div class="light">
+        this is where you can find view profiles of other user:
+    {{ user.username }}
+    <br>
+    location: {{ user.location }}
+    <br>
+    bio: {{ user.bio }}
+    <br>
+
+    {% if  session.auth_user %}
+        {% if alreadyFollowing == False %}
+            <div class="followButton pure-button" data-state="not-following" data-other-user-id="{{ user.id }}"> follow </div>
+        {% else %}
+            <button class="followButton pure-button" data-state="following" data-other-user-id="{{ user.id }}"> un-Follow </button>
+        {% endif %}
+
+
+    {% endif %}
+    </div>
+
+    <div class="pure-g">
+        <div class="center ">
+            <div class="column light pure-u-7-24 ">
+                thier followers
+
+
+                {% if user.followers %}
+
+                    {% for follower in user.followers %}
+
+                        <div class="mid entry">
+                            <a class="pure-button" href="/otherUser/{{ follower.follower.id }}">{{ follower.follower.username }}</a>
+
+                        </div>
+
+                    {% endfor %}
+                {% endif %}
+
+            </div>
+            <div class="column light  pure-u-7-24">
+                10 most recent posts by user {{ user.username }}:
+                {% if  posts %}
+
+                    {% for post in  posts %}
+
+                        <div class="mid entry">
+                            <a class="pure-button" href="/otherUser/{{ post.creator.id }}">{{ post.creator.username }}</a>
+                            {% if post.url %}
+                                link:
+                                <a class="pure-button url" href="{{ post.url }}"> {{ post.url }}</a>
+                            {% endif %}
+                            <div>
+                             {{ post.post_text  }}
+
+
+                            </div>
+
+                            <div class="mid entryhead ">  {{ loop.index }} .            . {{ post.date }}</div>
+
+                        </div>
+
+                    {% endfor %}
+                {% endif %}
+            </div>
+
+            <div class="column light pure-u-7-24">
+                who they are following
+
+
+                {% if user.following %}
+
+                    {% for follow in user.following %}
+
+                        <div class="mid entry">
+                            <a class="pure-button" href="/otherUser/{{ follow.followee.id }}">{{ follow.followee.username }}</a>
+
+                        </div>
+
+                    {% endfor %}
+                {% endif %}
+            </div>
+
+        </div>
+
+    </div>
+
+{% endblock %}

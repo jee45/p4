@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block content %}
+
+    <a class="pure-button" href="/logout"> logout</a>
+    <a class="pure-button" href="/home">home</a>
+
+    <div class="light">
+            this is where you can find view profiles of other users:
+    </div>
+
+    <div  >
+        <div >
+            <div class=" bit light ">
+                this is a list of all the users
+
+               {%  for x in list  %}
+                    <a class="pure-button" href="/otherUser/{{ x.id }}">{{ x.username  }}</a>
+                {% endfor  %}
+            </div>
+
+        </div>
+
+    </div>
+
+{% endblock %}
