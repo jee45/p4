@@ -20,8 +20,6 @@ class User(db.Model):
 
     gravataremail = db.Column(db.String(50))
 
-
-
     posts = relationship("Post",
                          order_by="desc(Post.date)",
                          primaryjoin="Post.creator_id==User.id")
