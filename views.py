@@ -16,6 +16,7 @@ import models
 
 from sqlalchemy import desc
 from math import ceil
+
 from random_words import LoremIpsum
 
 #from werkzeug import secure_filename
@@ -48,6 +49,7 @@ def checkAuth():
 @app.route('/')
 def index():
 
+
     flask.session['auth_user'] = None
     return flask.render_template('index.html')
 
@@ -65,7 +67,9 @@ def login():
 
         #see if the user already exists
         user = models.User.query.filter_by(username=u).first()
+        post = user.posts
 
+        print("testig posts ", post)
         if user:
             #if they do, take them to the homepage
             password = bcrypt.hashpw(p.encode('utf8'), user.password)
@@ -164,7 +168,7 @@ def deleteVoidPost():
 
 @app.route('/home')
 def home():
-    # todo
+
 
     if flask.session['auth_user'] is None:
         user=None
@@ -174,6 +178,8 @@ def home():
                                  user =user,
                                  posts=posts
                                  )
+
+
 
     '''
 

@@ -87,6 +87,11 @@ class Post(db.Model):
         self.date = date
 
 
+
+
+
+
+
 class Follow(db.Model):
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     follower_id = db.Column(db.Integer, db.ForeignKey('user.id'))
@@ -103,4 +108,4 @@ class Follow(db.Model):
 
 
 #create
-db.create_all()
+db.create_all(app=app)
