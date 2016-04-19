@@ -77,7 +77,7 @@ class Post(db.Model):
     creator_id = db.Column(db.Integer, db.ForeignKey('user.id'))
     creator = db.relationship('User', primaryjoin=creator_id == User.id)
 
-    photo = db.Column(db.LargeBinary)
+    photo = db.Column(db.BLOB)
     photo_type = db.Column(db.String(50))
 
 
