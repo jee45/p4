@@ -309,8 +309,9 @@ def submitNewPost():
 
     #count pictures in database
 
-    count = models.Post.query.filter_by(photo!=None).count()
+    count = models.Post.query.filter(models.Post.photo!=None).count()
 
+    print("pic count ",count)
     flask.flash("pic count ",count)
 
     flask.flash('new post submitted!')
