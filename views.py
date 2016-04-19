@@ -322,10 +322,10 @@ def photo(post_id):
     if flask.g.user is None:
         flask.abort(403)
 
-    # Get the Hai
-    post = models.Post.query.get_or_404(post_id)
-    # Have permission?
 
+    post = models.Post.query.get_or_404(post_id)
+
+    flask.flash('size of file is: ', len(post.photo))
 
     # OK, send the data
     return (post.photo, post.photo_type)
