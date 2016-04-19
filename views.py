@@ -331,6 +331,9 @@ def photo(post_id):
         flask.abort(403)
 
     post = models.Post.query.get_or_404(post_id)
+
+    flask.flash(post.photo_type)
+
     return (post.photo, post.photo_type)
 
 
