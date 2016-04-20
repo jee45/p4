@@ -52,9 +52,9 @@ def index():
 
     flask.session['auth_user'] = None
 
-    # createFakeUsers()
-    # createFakeRelationships()
-    # createFakePosts()
+    #createFakeUsers()
+    createFakeRelationships()
+    createFakePosts()
 
 
     return flask.render_template('index.html')
