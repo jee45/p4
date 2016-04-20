@@ -51,11 +51,18 @@ def index():
 
 
     flask.session['auth_user'] = None
+
+    createFakeUsers()
+    createFakeRelationships()
+    createFakePosts()
+
+
     return flask.render_template('index.html')
 
 
 @app.route('/login', methods=['POST'])
 def login():
+        #
 
 
     #if the user and password is filled out,
