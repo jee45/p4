@@ -312,9 +312,7 @@ def submitNewPost():
 
     count = models.Post.query.filter(models.Post.photo!=None).count()
 
-    print("pic count ", count)
-    stringq = "pic count " + str(count)
-    flask.flash(stringq)
+
 
     flask.flash('new post submitted!')
     print(flask.request)
@@ -333,7 +331,6 @@ def photo(post_id):
 
     post = models.Post.query.get_or_404(post_id)
 
-    flask.flash(post.photo_type)
 
     #return (post.photo, post.photo_type)
     return flask.send_file(io.BytesIO(post.photo))
