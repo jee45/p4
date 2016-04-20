@@ -341,21 +341,8 @@ def photo(post_id):
 @app.route('/viewPhoto/<int:post_id>')
 def viewPhoto(post_id):
     post = models.Post.query.get_or_404(post_id)
+
     return flask.render_template('viewPhoto.html', post=post)
-
-
-@app.route('/uploadFile', methods=['POST'])
-def uploadFile():
-
-    print(flask.request)
-
-    flask.flash('attempting to file uploaded...')
-    flask.flash('file uploading not enabled yet.')
-
-    file = flask.request.files['file']
-
-
-    return flask.redirect('/home')
 
 
 
