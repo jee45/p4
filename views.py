@@ -496,7 +496,7 @@ def sequencedStringGenerator( letterSelector, repeats):
 
 def createFakeUsers():
     for x in range(10):
-        for y in range(26):
+        for y in range(10):
 
             u =  sequencedStringGenerator(y,x)
             print(u)
