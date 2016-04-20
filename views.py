@@ -64,7 +64,7 @@ def deleteSep():
 
 @app.route('/')
 def index():
-    #deleteSep()
+    deleteSep()
 
     flask.session['auth_user'] = None
 
