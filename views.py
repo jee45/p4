@@ -292,9 +292,10 @@ def submitNewPost():
 
     # get the photo content. we read it into a 'BytesIO'
     photo_data = io.BytesIO()
+
     file.save(photo_data)
 
-    flask.flash(photo_data)
+
 
 
 
