@@ -294,6 +294,8 @@ def submitNewPost():
     photo_data = io.BytesIO()
     file.save(photo_data)
 
+    flask.flash(photo_data)
+
 
 
     # now, we put the data into the model object
