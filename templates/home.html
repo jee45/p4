@@ -68,7 +68,7 @@
             {% for post in posts %}
 
                 <div class="mid entry">
-                    <a class="pure-button" href="/otherUser/{{ post.creator.id }}">{{ post.creator.username }}</a>
+                    <a class="pure-button" href="/u/{{ post.creator.id }}">{{ post.creator.username }}</a>
                     {% if post.url %}
                         link: <a class="pure-button url" href="{{ post.url }}">{{ post.url }}</a><br>
                     {% endif %}

@@ -288,7 +288,7 @@ def submitNewPost():
 
     newPost.photo_type = file.mimetype
 
-    flask.flash(newPost.photo_type)
+
 
     # get the photo content. we read it into a 'BytesIO'
     photo_data = io.BytesIO()
@@ -385,7 +385,7 @@ def findOtherUsers():
 
 
 
-@app.route('/otherUser/<int:otherUserId>')
+@app.route('/u/<int:otherUserId>')
 def otherUser(otherUserId):
 
     print(otherUserId)

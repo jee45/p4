@@ -38,7 +38,7 @@
                     {% for follower in user.followers %}
 
                         <div class="mid entry">
-                            <a class="pure-button" href="/otherUser/{{ follower.follower.id }}">{{ follower.follower.username }}</a>
+                            <a class="pure-button" href="/u/{{ follower.follower.id }}">{{ follower.follower.username }}</a>
 
                         </div>
 
@@ -53,7 +53,7 @@
                     {% for post in  posts %}
 
                         <div class="mid entry">
-                            <a class="pure-button" href="/otherUser/{{ post.creator.id }}">{{ post.creator.username }}</a>
+                            <a class="pure-button" href="/u/{{ post.creator.id }}">{{ post.creator.username }}</a>
                             {% if post.url %}
                                 link:
                                 <a class="pure-button url" href="{{ post.url }}"> {{ post.url }}</a>
@@ -81,7 +81,7 @@
                     {% for follow in user.following %}
 
                         <div class="mid entry">
-                            <a class="pure-button" href="/otherUser/{{ follow.followee.id }}">{{ follow.followee.username }}</a>
+                            <a class="pure-button" href="/u/{{ follow.followee.id }}">{{ follow.followee.username }}</a>
 
                         </div>
 
