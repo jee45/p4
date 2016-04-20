@@ -50,15 +50,6 @@ def checkAuth():
 @app.route('/')
 def index():
 
-
-    post = models.Post.query.filter(models.Post.photo!=None).first()
-    print(post)
-    print(post.id)
-
-
-    db.session.delete(post)
-    db.session.commit()
-
     flask.session['auth_user'] = None
 
     # #createFakeUsers()
