@@ -335,7 +335,8 @@ def photo(post_id):
 
     flask.flash(post.photo_type)
 
-    return (post.photo, post.photo_type)
+    #return (post.photo, post.photo_type)
+    return flask.send_file(io.BytesIO(post.photo))
 
 
 @app.route('/viewPhoto/<int:post_id>')
