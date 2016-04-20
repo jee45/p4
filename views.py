@@ -551,7 +551,7 @@ def createFakePosts():
     # find out how many users there are
     count = models.User.query.count()
 
-    iterations = 1000
+    iterations = 100
     for x in range(iterations):
         # get a random id within the range of the count
         user1Id = random.randint(0, count)
