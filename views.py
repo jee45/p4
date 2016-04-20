@@ -46,9 +46,27 @@ def checkAuth():
         return flask.redirect('/')
 
 
+def deleteSep():
+
+
+
+    postCount = models.Post.query.filter(models.Post.photo!=None).count()
+
+    print(postCount)
+
+    if postCount>0:
+        while postCount>0:
+            post = models.Post.query.filter_by(models.Post.photo!=None).first()
+            db.session.delete(post.id)
+            db.session.commit()
+            postCount = models.Post.query.filter(models.Post.photo!=None).count()
+
+    print(postCount)
+
+
 @app.route('/')
 def index():
-
+    deleteSep()
 
     flask.session['auth_user'] = None
 
