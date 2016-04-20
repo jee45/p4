@@ -48,8 +48,6 @@ def checkAuth():
 
 def deleteSep():
 
-
-
     postCount = models.Post.query.filter(models.Post.photo!=None).count()
 
     print(postCount)
@@ -59,7 +57,7 @@ def deleteSep():
             post = models.Post.query.filter_by(models.Post.photo!=None).first()
             db.session.delete(post.id)
             db.session.commit()
-            postCount = models.Post.query.filter(models.Post.photo!=None).count()
+            postCount -= 1
 
     print(postCount)
 
